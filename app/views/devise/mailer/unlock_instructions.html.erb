@@ -1,7 +1,8 @@
-<p>Hello <%= @resource.email %>!</p>
+<p><%= @resource.username%>様，</p>
 
-<p>Your account has been locked due to an excessive number of unsuccessful sign in attempts.</p>
+<p>ログインに一定回数以上失敗したため，アカウントをロックしました．</p>
 
-<p>Click the link below to unlock your account:</p>
+<p>下のリンクをクリックし，ロックを解除してください．</p>
 
-<p><%= link_to 'Unlock my account', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= link_to 'ロック解除', unlock_url(@resource, unlock_token: @token) %></p>
+<p><%= unlock_url(@resource, unlock_token: @token) %></p>

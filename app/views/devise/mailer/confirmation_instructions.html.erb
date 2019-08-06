@@ -1,5 +1,8 @@
-<p>Welcome <%= @email %>!</p>
+<p><%= @resource.username %>様，</p>
 
-<p>You can confirm your account email through the link below:</p>
+<p>以下のリンクをクリックして，パスワードを再登録してください</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= link_to 'パスワードリセット', confirmation_url(@resource, confirmation_token: @token) %></p>
+<p><%= confirmation_url(@resource, confirmation_token: @token) %></p>
+
+<p>もしこのメールに心当たりが無い場合は，無視してください</p>

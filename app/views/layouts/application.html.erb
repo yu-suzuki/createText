@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="ja">
 <head>
   <title>CreateText</title>
   <%= csrf_meta_tags %>
@@ -12,11 +12,24 @@
 
   <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
   <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
-
+  <%= react_component("cssBaseline") %>
 </head>
 
 <body>
-<%= react_component("cssBaseline") %>
+<% if current_user %>
+  <%= react_component("Menubar", {username: current_user.username}) %>
+<% else %>
+  <%= react_component("Menubar", {username: nil}) %>
+<% end %>
+
+<% if flash[:alert] %>
+  <%= react_component("CustomizedSnackbars", {type: "error", message: flash[:alert]}) %>
+<% end %>
+<% if flash[:notice] %>
+  <%= react_component("CustomizedSnackbars", {type: "warning", message: flash[:notice]}) %>
+<% end %>
+
 <%= yield %>
+
 </body>
 </html>
